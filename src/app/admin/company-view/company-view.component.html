@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-md-2"></div>
+    <div class="col col-md-2">
+      <input type="button" class="btn btn-primary" (click)="getCompanies()" value="Get Companies">
+    </div>
+    <div class="col col-md-2"></div>
+    <div class="col col-md-2"></div>
+    <div class="col col-md-4"></div>
+  </div>
+  <table class="table" *ngIf="companies">
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Password</th>
+      <th>Email</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let company of companies">
+        <td>{{company.id}}</td>
+        <td>{{company.compName}}</td>
+        <td>{{company.password}}</td>
+        <td>{{company.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
