@@ -15,6 +15,10 @@ import { CompanyCreateComponent } from './admin/company-create/company-create.co
 import { CompanyViewComponent } from './admin/company-view/company-view.component';
 import { MyInterceptor } from './interceptors/myInterceptor';
 import { AdminService } from './services/admin/admin.service';
+import { CompanyMainComponent } from './company/company-main/company-main.component';
+import { CouponViewComponent } from './company/coupon-view/coupon-view.component';
+import { CouponCreateComponent } from './company/coupon-create/coupon-create.component';
+import { KeysPipe } from './pipes/keys.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { AdminService } from './services/admin/admin.service';
     FooterComponent,
     AdminMainComponent,
     CompanyCreateComponent,
-    CompanyViewComponent
+    CompanyViewComponent,
+    CompanyMainComponent,
+    CouponViewComponent,
+    CouponCreateComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,

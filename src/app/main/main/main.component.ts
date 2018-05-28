@@ -27,13 +27,20 @@ export class MainComponent implements OnInit {
   }
 
   public login(): void {
+    let navigation = "admin";
+    if(this.loginInfo.type == UserType.COMPANY)
+      navigation = "company";
+    else if(this.loginInfo.type == UserType.CUSTOMER)
+      navigation = "customer";
+
+
     this.loginService.login(this.loginInfo).subscribe(
       res => {
         console.log(res);
         this.applicationResponse = res;
         this.applicationResponse.errorType = "success";
         setTimeout(
-          ()=>{this.router.navigateByUrl("admin")},
+          ()=>{this.router.navigateByUrl(navigation)},
           1000);
       },
       error => {

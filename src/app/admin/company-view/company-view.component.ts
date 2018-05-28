@@ -22,11 +22,13 @@ export class CompanyViewComponent implements OnInit {
   public getCompanies() {
     this.adminService.getCompanies().subscribe(
       res => {
-        this.companies = res;
-        this.companies.forEach(obj => {
+        
+        res.forEach(obj => {
           obj.isRemoved = false;
           obj.isUpdated = false;
+          obj.updateFailure = "white";
         });
+        this.companies = res;
         console.log(this.companies);
       },
       err => {
@@ -57,11 +59,19 @@ export class CompanyViewComponent implements OnInit {
     });
   }
 
-  public checkRemove(id: number) {
-    this.companies.forEach(company => {
-      if(company.id == id)
-        company.isRemoved = true;
-    });
+  public updateSelectedCompanies() {
+    console.log(this.companies);
+  }
+
+  async updateCompany(company) {
+    this.adminService.updateCompany(company as Company).subscribe(
+      res => {
+
+      }, 
+      err => {
+        
+      }
+    );
   }
 
 }
