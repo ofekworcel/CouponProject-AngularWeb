@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -13,6 +13,8 @@ import { ApplicationRoutes } from './models/applicationRoutes';
 import { AdminMainComponent } from './admin/admin-main/admin-main.component';
 import { CompanyCreateComponent } from './admin/company-create/company-create.component';
 import { CompanyViewComponent } from './admin/company-view/company-view.component';
+import { MyInterceptor } from './interceptors/myInterceptor';
+import { AdminService } from './services/admin/admin.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,13 @@ import { CompanyViewComponent } from './admin/company-view/company-view.componen
     FormsModule,
     RouterModule.forRoot(ApplicationRoutes.routes, { useHash: true })
   ],
-  providers: [LoginService],
+  providers: [LoginService, AdminService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,20 +8,48 @@
     <div class="col col-md-2"></div>
     <div class="col col-md-4"></div>
   </div>
-  <table class="table" *ngIf="companies">
-    <thead>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Password</th>
-      <th>Email</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let company of companies">
-        <td>{{company.id}}</td>
-        <td>{{company.compName}}</td>
-        <td>{{company.password}}</td>
-        <td>{{company.email}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row text-center" *ngIf="companies">
+    <div class="col col-md-2"></div>
+    <div class="col col-md-8">
+      <table class="table" *ngIf="companies">
+        <thead>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Email</th>
+          <th>Remove</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let company of companies">
+            <td>
+              <input type="text" value="{{company.id}}" disabled readonly/>
+            </td>
+            <td>
+              <input type="text" value="{{company.compName}}" disabled readonly/>
+            </td>
+            <td>
+              <input type="text" [(ngModel)]="company.password" />
+            </td>
+            <td>
+              <input type="text" [(ngModel)]="company.email" />
+            </td>
+            <td>
+              <input type="checkbox" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col col-md-2"></div>
+  </div>
+  <div class="row" *ngIf="companies">
+    <div class="col col-md-3"></div>
+    <div class="col col-md-3"></div>
+    <div class="col col-md-3">
+      <button class="btn btn-danger" (click)="removeSelectedCompanies()">
+        Remove Selected Companies
+      </button>
+    </div>
+    <div class="col col-md-3"></div>
+  </div>
 </div>
