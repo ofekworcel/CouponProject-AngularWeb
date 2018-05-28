@@ -9,8 +9,8 @@
     <div class="col col-md-4"></div>
   </div>
   <div class="row text-center" *ngIf="companies">
-    <div class="col col-md-2"></div>
-    <div class="col col-md-8">
+    <div class="col col-md-1"></div>
+    <div class="col col-md-10">
       <table class="table" *ngIf="companies">
         <thead>
           <th>ID</th>
@@ -34,13 +34,13 @@
               <input type="text" [(ngModel)]="company.email" />
             </td>
             <td>
-              <input type="checkbox" />
+              <input type="checkbox" [(ngModel)]="company.isRemoved" (change)="checkRemove(company.id)"/>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="col col-md-2"></div>
+    <div class="col col-md-1"></div>
   </div>
   <div class="row" *ngIf="companies">
     <div class="col col-md-3"></div>
