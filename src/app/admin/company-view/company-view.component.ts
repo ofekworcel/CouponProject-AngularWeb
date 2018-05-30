@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AdminService } from '../../services/admin/admin.service';
 import { Company } from '../../models/company';
 import { Observable } from 'rxjs';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-company-view',
@@ -10,9 +11,10 @@ import { Observable } from 'rxjs';
 })
 export class CompanyViewComponent implements OnInit {
 
+  modalRef: BsModalRef;
   companies: any[];
 
-  constructor(private adminService: AdminService) { 
+  constructor(private adminService: AdminService, private modalService: BsModalService) { 
     this.companies = null;
   }
 
@@ -74,4 +76,7 @@ export class CompanyViewComponent implements OnInit {
     );
   }
 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 }

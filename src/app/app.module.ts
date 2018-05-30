@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main/main.component';
@@ -38,7 +39,8 @@ import { KeysPipe } from './pipes/keys.pipe';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(ApplicationRoutes.routes, { useHash: true })
+    RouterModule.forRoot(ApplicationRoutes.routes, { useHash: true }),
+    ModalModule.forRoot()
   ],
   providers: [LoginService, AdminService,
     {

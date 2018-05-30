@@ -44,7 +44,11 @@
   </div>
   <div class="row" *ngIf="companies">
     <div class="col col-md-3"></div>
-    <div class="col col-md-3"></div>
+    <div class="col col-md-3">
+      <button class="btn btn-success" (click)="openModal(companyCreate)">
+        Create New Company
+      </button>
+    </div>
     <div class="col col-md-3">
       <button class="btn btn-danger" (click)="removeSelectedCompanies()">
         Remove Selected Companies
@@ -57,3 +61,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #companyCreate>
+  <app-company-create [modalRef]="modalRef" ></app-company-create>
+</ng-template>

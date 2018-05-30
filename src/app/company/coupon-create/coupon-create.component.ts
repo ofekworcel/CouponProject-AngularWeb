@@ -3,7 +3,6 @@ import { CompanyService } from '../../services/company/company.service';
 import { CouponType } from '../../models/couponType';
 import { Coupon } from '../../models/coupon';
 
-
 @Component({
   selector: 'app-coupon-create',
   templateUrl: './coupon-create.component.html',
@@ -13,6 +12,7 @@ export class CouponCreateComponent implements OnInit {
 
   couponTypes = CouponType;
   coupon: Coupon;
+
 
   constructor(private companyService: CompanyService) {
     this.coupon = new Coupon(null, null, null, null, null, null, null, null, null);
