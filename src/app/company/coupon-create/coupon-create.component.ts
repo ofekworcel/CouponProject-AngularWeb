@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CompanyService } from '../../services/company/company.service';
 import { CouponType } from '../../models/couponType';
 import { Coupon } from '../../models/coupon';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-coupon-create',
@@ -12,7 +13,7 @@ export class CouponCreateComponent implements OnInit {
 
   couponTypes = CouponType;
   coupon: Coupon;
-
+  @Input() modalRef: BsModalRef;
 
   constructor(private companyService: CompanyService) {
     this.coupon = new Coupon(null, null, null, null, null, null, null, null, null);

@@ -41,7 +41,7 @@ export class MainComponent implements OnInit {
         this.applicationResponse.errorType = "success";
         setTimeout(
           ()=>{this.router.navigateByUrl(navigation)},
-          1000);
+          500);
       },
       error => {
         console.log(error);

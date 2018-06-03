@@ -8,6 +8,7 @@ import { Coupon } from '../../models/coupon';
 })
 export class CompanyService {
 
+  
   private _URL = "http://localhost:8080/CouponsWeb/rest/CompanyService/";
 
   constructor(private http: HttpClient) {
@@ -20,5 +21,22 @@ export class CompanyService {
     console.log(coupon);
     return this.http.post(this._URL + "coupon", coupon);
   }
+
+  public getAllCompanyCoupons(): Observable<any> {
+    return this.http.get(this._URL + "coupon");
+  }
+
+  public getCoupon(id: number): Observable<any> {
+    return this.http.get(this._URL + "coupon?id=" + id);
+  }
+
+  public updateCoupon(coupon: Coupon): Observable<any> {
+    return this.http.put(this._URL + "coupon", coupon);
+  }
+
+  public deleteCoupon(id: number): Observable<any> {
+    return this.http.delete(this._URL + "coupon/" + id);
+  }
+
 
 }
