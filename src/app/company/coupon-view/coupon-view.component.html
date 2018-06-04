@@ -47,33 +47,31 @@
               <input type="text" value="{{coupon.id}}" disabled readonly/>
             </td>
             <td>
-              <input type="text" value="{{coupon.Title}}" disabled readonly/>
+              <input type="text" value="{{coupon.title}}" disabled readonly/>
             </td>
             <td>
-              <input type="date" [(ngModel)]="coupon.StartDate" (change)="company.isUpdated = true" />
+              <input type="date" [(ngModel)]="coupon.startDate" (change)="coupon.isUpdated = true" />
             </td>
             <td>
-              <input type="date" [(ngModel)]="coupon.EndDate" (change)="company.isUpdated = true" />
+              <input type="date" [(ngModel)]="coupon.endDate" (change)="coupon.isUpdated = true" />
             </td>
             <td>
-              <input type="text" [(ngModel)]="coupon.Amount" (change)="company.isUpdated = true" />
+              <input type="text" [(ngModel)]="coupon.amount" (change)="coupon.isUpdated = true" />
             </td>
             <td>
-              <select name="couponType" [(ngModel)]="coupon.type" id="couponType" class="form-control" (change)="company.isUpdated = true">
-                <option *ngFor="let type of couponTypes | keys"  [value]="type.key">{{type.value}}</option>
-              </select>
+              <input type="text" value="{{coupon.type}}">
             </td>
             <td>
-              <input type="text" [(ngModel)]="coupon.Description" (change)="company.isUpdated = true" />
+              <input type="text" [(ngModel)]="coupon.message" (change)="coupon.isUpdated = true" />
             </td>
             <td>
-              <input type="text" [(ngModel)]="coupon.Price" (change)="company.isUpdated = true" />
+              <input type="text" [(ngModel)]="coupon.price" (change)="coupon.isUpdated = true" />
             </td>
             <td>
-              <input type="text" [(ngModel)]="coupon.Image" (change)="company.isUpdated = true" />
+              <input type="text" [(ngModel)]="coupon.image" (change)="coupon.isUpdated = true" />
             </td>
             <td>
-              <input type="checkbox" [(ngModel)]="company.isRemoved"/>
+              <input type="checkbox" [(ngModel)]="coupon.isRemoved"/>
             </td>
           </tr>
         </tbody>

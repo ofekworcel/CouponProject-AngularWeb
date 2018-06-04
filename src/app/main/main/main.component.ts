@@ -19,7 +19,7 @@ export class MainComponent implements OnInit {
   customer: string = UserType.CUSTOMER;
 
   constructor(private loginService: LoginService, private router: Router) { 
-    this.loginInfo = new LoginInfo(null, null, null);
+    this.loginInfo = new LoginInfo(null, null, UserType.ADMIN);
     this.applicationResponse = null;
   }
 

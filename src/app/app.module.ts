@@ -20,6 +20,7 @@ import { CompanyMainComponent } from './company/company-main/company-main.compon
 import { CouponViewComponent } from './company/coupon-view/coupon-view.component';
 import { CouponCreateComponent } from './company/coupon-create/coupon-create.component';
 import { KeysPipe } from './pipes/keys.pipe';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { KeysPipe } from './pipes/keys.pipe';
     RouterModule.forRoot(ApplicationRoutes.routes, { useHash: true }),
     ModalModule.forRoot()
   ],
-  providers: [LoginService, AdminService,
+  providers: [LoginService, AdminService, DatePipe
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MyInterceptor,

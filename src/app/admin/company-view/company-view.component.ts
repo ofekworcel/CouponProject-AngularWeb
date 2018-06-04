@@ -62,21 +62,27 @@ export class CompanyViewComponent implements OnInit {
   }
 
   public updateSelectedCompanies() {
-    console.log(this.companies);
+    this.companies.forEach(company => {
+      if(company.isUpdated == true)
+        this.updateCompany(company).then();
+    });
   }
 
   async updateCompany(company) {
     this.adminService.updateCompany(company as Company).subscribe(
       res => {
-
+        if(res.code == 0)
+          company.updateFailure = "white"
+        else  
+          company.updateFailure = "red";
       }, 
       err => {
-        
+        company.updateFailure = "red";
       }
     );
   }
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.modalService.show(template, {class: 'modal-lg'});
   }
 }

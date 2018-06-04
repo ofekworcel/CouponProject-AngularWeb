@@ -9,8 +9,6 @@ export class KeysPipe implements PipeTransform {
     let keys = [];
     for (var enumMember in value) {
         keys.push({key: enumMember, value: value[enumMember]});
-        // Uncomment if you want log
-        // console.log("enum member: ", value[enumMember]);
     }
     return keys;
   }

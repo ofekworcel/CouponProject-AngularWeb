@@ -16,7 +16,7 @@ export class CouponCreateComponent implements OnInit {
   @Input() modalRef: BsModalRef;
 
   constructor(private companyService: CompanyService) {
-    this.coupon = new Coupon(null, null, null, null, null, null, null, null, null);
+    this.coupon = new Coupon(null, null, null, null, null, CouponType.CAMPING, null, null, null);
   }
 
   ngOnInit() {
