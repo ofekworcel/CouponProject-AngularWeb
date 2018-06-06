@@ -43,13 +43,7 @@ import { DatePipe } from '@angular/common';
     RouterModule.forRoot(ApplicationRoutes.routes, { useHash: true }),
     ModalModule.forRoot()
   ],
-  providers: [LoginService, AdminService, DatePipe
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: MyInterceptor,
-      multi: true
-    }
-  ],
+  providers: [LoginService, AdminService, DatePipe ,{ provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

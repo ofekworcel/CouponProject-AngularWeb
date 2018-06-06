@@ -68,6 +68,15 @@
           </div>
           <div class="col col-md-2"></div>
         </div>
+        <div class="row text-center">
+          <div class="col col-md-2"></div>
+          <div class="col col-md-8">
+            <div *ngIf="applicationResponse" class="alert alert-{{applicationResponse.errorType}}" role="alert">
+              <strong>{{applicationResponse.message}}</strong>
+            </div>
+          </div>
+          <div class="col col-md-2"></div>
+        </div>
       </div>
     </div>
   </div>

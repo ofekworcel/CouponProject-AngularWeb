@@ -3,6 +3,7 @@ import { CompanyService } from '../../services/company/company.service';
 import { CouponType } from '../../models/couponType';
 import { Coupon } from '../../models/coupon';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { ApplicationResponse } from '../../models/applicationResponse';
 
 @Component({
   selector: 'app-coupon-create',
@@ -11,6 +12,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class CouponCreateComponent implements OnInit {
 
+  applicationResponse: ApplicationResponse;
   couponTypes = CouponType;
   coupon: Coupon;
   @Input() modalRef: BsModalRef;
@@ -26,9 +28,13 @@ export class CouponCreateComponent implements OnInit {
     this.companyService.createCoupon(this.coupon).subscribe(
       res => {
         console.log(res);
+        this.applicationResponse = res;
+        this.applicationResponse.errorType = "success";
       },
       err => {
         console.log(err);
+        this.applicationResponse = err.error;
+        this.applicationResponse.errorType = "danger";
       }
     );
   }
