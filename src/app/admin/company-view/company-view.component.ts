@@ -24,12 +24,14 @@ export class CompanyViewComponent implements OnInit {
   public getCompanies() {
     this.adminService.getCompanies().subscribe(
       res => {
-        
-        res.forEach(obj => {
-          obj.isRemoved = false;
-          obj.isUpdated = false;
-          obj.updateFailure = "white";
-        });
+        console.log(res);
+        console.log("Above is res");
+        for (let obj of res)
+        {
+            obj.isRemoved = false;
+            obj.isUpdated = false;
+            obj.updateFailure = "white";
+        };
         this.companies = res;
         console.log(this.companies);
       },
@@ -40,10 +42,11 @@ export class CompanyViewComponent implements OnInit {
   }
 
   public removeSelectedCompanies() {
-    this.companies.forEach(company => {
+    for (let company of this.companies)
+    {
       if(company.isRemoved)
-        this.removeCompany(company);
-    });
+      this.removeCompany(company);
+    }
   }
 
   async removeCompany(company) {

@@ -3,6 +3,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CompanyService } from '../../services/company/company.service';
 import { DatePipe } from '@angular/common';
 import { CouponType } from '../../models/couponType';
+import { Observable } from 'rxjs';
+import { AdminService } from '../../services/admin/admin.service';
 
 @Component({
   selector: 'app-coupon-view',
@@ -14,6 +16,7 @@ export class CouponViewComponent implements OnInit {
   modalRef: BsModalRef;
   coupons: any[];
   couponTypes = CouponType;
+  
 
 
   constructor(private companyService: CompanyService, 
@@ -58,6 +61,29 @@ export class CouponViewComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-lg'});
+  }
+
+  public removeSelectedCoupons() {
+    for (let coupon of this.coupons)
+    {
+      if(coupon.isRemoved)
+      this.removeCoupon(coupon);
+    }
+  }
+
+  async removeCoupon(coupon) {
+    var obs: Observable<any> = this.companyService.deleteCoupon(coupon.id);
+    obs.subscribe(res => {
+      let i = 0;
+      for(i; i < this.coupons.length; i++)  {
+        if(this.coupons[i].id == coupon.id) {
+          this.coupons.splice(i, 1);
+          break;
+        }
+      }
+    }, err => {
+      console.log(err);
+    });
   }
 
 
