@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-md-2"></div>
+    <div class="col col-md-2">
+      <input type="button" class="btn btn-primary" (click)="getCustomers()" value="Manage Customers">
+    </div>
+    <div class="col col-md-2"></div>
+    <div class="col col-md-2"></div>
+    <div class="col col-md-4"></div>
+  </div>
+  <div class="row text-center" *ngIf="showCustomers">
+    <div class="col col-md-1"></div>
+    <div class="col col-md-10">
+      <table class="table" *ngIf="customers">
+        <thead>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Remove</th>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let customer of customers" [ngStyle]="{'background-color': customer.updateFailure}">
+            <td>
+              <input type="text" value="{{customer.id}}" disabled readonly/>
+            </td>
+            <td>
+              <input type="text" value="{{customer.custName}}" disabled readonly/>
+            </td>
+            <td>
+              <input type="text" [(ngModel)]="customer.password" (change)="customer.isUpdated = true; customer.updateFailure = 'blue';" />
+            </td>
+            <td>
+              <input type="checkbox" [(ngModel)]="customer.isRemoved"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col col-md-1"></div>
+  </div>
+  <div class="row" *ngIf="showCustomers">
+    <div class="col col-md-3"></div>
+    <div class="col col-md-3">
+      <button class="btn btn-success" (click)="openModal(customerCreate)">
+        Create New Customer
+      </button>
+    </div>
+    <div class="col col-md-3">
+      <button class="btn btn-danger" (click)="removeSelectedCustomers()">
+        Remove Selected Customers
+      </button>
+    </div>
+    <div class="col col-md-3">
+      <button class="btn btn-primary" (click)="updateSelectedCustomers()">
+        Update Changed Customers
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #customerCreate>
+  <app-customer-create [modalRef]="modalRef" ></app-customer-create>
+</ng-template>

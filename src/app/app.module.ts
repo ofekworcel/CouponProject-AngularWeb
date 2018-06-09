@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -21,6 +21,12 @@ import { CouponViewComponent } from './company/coupon-view/coupon-view.component
 import { CouponCreateComponent } from './company/coupon-create/coupon-create.component';
 import { KeysPipe } from './pipes/keys.pipe';
 import { DatePipe } from '@angular/common';
+import { Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { routing } from './app.routing';
+import { CustomerViewComponent } from 'src/app/admin/customer-view/customer-view.component';
+import { CustomerCreateComponent } from 'src/app/admin/customer-create/customer-create.component';
+
 
 @NgModule({
   declarations: [
@@ -34,16 +40,31 @@ import { DatePipe } from '@angular/common';
     CompanyMainComponent,
     CouponViewComponent,
     CouponCreateComponent,
-    KeysPipe
+    KeysPipe,
+    CustomerViewComponent,
+    CustomerCreateComponent,
+    PageNotFoundComponent,
   ],
+  
+  exports: [ RouterModule ],
+
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(ApplicationRoutes.routes, { useHash: true }),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    routing
   ],
   providers: [LoginService, AdminService, DatePipe ,{ provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
+
+
+
 export class AppModule { }
+
+
+
+
+

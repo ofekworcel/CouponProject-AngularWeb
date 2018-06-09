@@ -13,6 +13,7 @@ export class CompanyViewComponent implements OnInit {
 
   modalRef: BsModalRef;
   companies: any[];
+  showCompanies: boolean = false;
 
   constructor(private adminService: AdminService, private modalService: BsModalService) { 
     this.companies = null;
@@ -22,6 +23,8 @@ export class CompanyViewComponent implements OnInit {
   }
 
   public getCompanies() {
+    if (this.showCompanies) { this.showCompanies = false; }else this.showCompanies = true;
+
     this.adminService.getCompanies().subscribe(
       res => {
         console.log(res);

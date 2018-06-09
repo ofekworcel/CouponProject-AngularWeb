@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col col-md-2"></div>
     <div class="col col-md-2">
-      <input type="button" class="btn btn-primary" (click)="getCompanies()" value="Get Companies">
+      <input type="button" class="btn btn-primary" (click)="getCompanies()" value="Manage Companies">
     </div>
     <div class="col col-md-2"></div>
     <div class="col col-md-2"></div>
     <div class="col col-md-4"></div>
   </div>
-  <div class="row text-center" *ngIf="companies">
+  <div class="row text-center" *ngIf="showCompanies">
     <div class="col col-md-1"></div>
     <div class="col col-md-10">
       <table class="table" *ngIf="companies">
@@ -42,7 +42,7 @@
     </div>
     <div class="col col-md-1"></div>
   </div>
-  <div class="row" *ngIf="companies">
+  <div class="row" *ngIf="showCompanies">
     <div class="col col-md-3"></div>
     <div class="col col-md-3">
       <button class="btn btn-success" (click)="openModal(companyCreate)">

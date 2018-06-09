@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Company } from '../../models/company';
+import { Customer } from 'src/app/models/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
+  //Company management functions
   public createCompany(company: Company): Observable<any> {
     return this.http.post(this._URL + "company", company);
   }
@@ -30,6 +32,29 @@ export class AdminService {
 
   public deleteCompany(id: number): Observable<any> {
     return this.http.delete(this._URL + "company/" + id);
+  }
+
+
+  //Customer management functions
+  public createCustomer(customer: Customer): Observable<any> {
+    console.log("admin create customer");
+    return this.http.post(this._URL + "customer", customer);
+  }
+
+  public getCustomers(): Observable<any> {
+    return this.http.get(this._URL + "customer");
+  }
+
+  public getCustomer(id: number): Observable<any> {
+    return this.http.get(this._URL + "customerid?id=" + id);
+  }
+
+  public updateCustomer(customer: Customer): Observable<any>{
+    return this.http.put(this._URL + "customer", customer);
+  }
+
+  public deleteCustomer(id: number): Observable<any>{
+    return this.http.delete(this._URL + "customer/" + id);
   }
 
 }

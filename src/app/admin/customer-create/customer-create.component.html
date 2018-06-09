@@ -1,0 +1,71 @@
+<div class="modal-header">
+  <h1> Create New Customer </h1>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form (ngSubmit)="createNewCustomer()" #customerForm="ngForm">
+  <div class="modal-body">
+    <div class="container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col col-md-3"></div>
+          <div class="col col-md-3">
+            <label>ID</label>
+          </div>
+          <div class="col col-md-3">
+            <input type="text" class="form-control" id="id" required [(ngModel)]="customer.id" name="id">
+          </div>
+          <div class="col col-md-3"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col col-md-3"></div>
+          <div class="col col-md-3">
+            <label>Name</label>
+          </div>
+          <div class="col col-md-3">
+            <input type="text" class="form-control" id="custName" required [(ngModel)]="customer.custName" name="custName">
+          </div>
+          <div class="col col-md-3"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col col-md-3"></div>
+          <div class="col col-md-3">
+            <label>Password</label>
+          </div>
+          <div class="col col-md-3">
+            <input type="text" class="form-control" id="password" required [(ngModel)]="customer.password" name="password">
+          </div>
+          <div class="col col-md-3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col col-md-2"></div>
+          <div class="col col-md-4">
+            <button type="submit" class="btn btn-success">Create Customer</button>
+          </div>
+          <div class="col col-md-4">
+            <button type="reset" class="btn btn-danger" (click)="modalRef.hide()">Cancel</button>
+          </div>
+          <div class="col col-md-2"></div>
+        </div>
+        <div class="row text-center">
+          <div class="col col-md-2"></div>
+          <div class="col col-md-8">
+            <div *ngIf="applicationResponse" class="alert alert-{{applicationResponse.errorType}}" role="alert">
+              <strong>{{applicationResponse.message}}</strong>
+            </div>
+          </div>
+          <div class="col col-md-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
