@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import { CouponType } from '../../models/couponType';
 import { Observable } from 'rxjs';
 import { AdminService } from '../../services/admin/admin.service';
+import { Coupon } from 'src/app/models/coupon';
 
 @Component({
   selector: 'app-coupon-view',
@@ -19,8 +20,7 @@ export class CouponViewComponent implements OnInit {
   
 
 
-  constructor(private companyService: CompanyService, 
-              private modalService: BsModalService, private datePipe: DatePipe) { 
+  constructor(private companyService: CompanyService, private modalService: BsModalService, private datePipe: DatePipe) { 
     this.coupons = null;
   }
 
@@ -86,5 +86,28 @@ export class CouponViewComponent implements OnInit {
     });
   }
 
+  public updateSelectedCoupons() {
+    this.coupons.forEach(coupon => {
+      if(coupon.isUpdated == true)
+        this.updateCoupon(coupon).then();
+    });
+  }
 
+  async updateCoupon(coupon) {
+    this.companyService.updateCoupon(coupon as Coupon).subscribe(
+      res => {
+        if(res.code == 0)
+          coupon.updateFailure = "white"
+        else  
+          coupon.updateFailure = "red";
+      },
+      err => {
+        coupon.updateFailure = "red";
+      }
+    );
+    setTimeout(() => {
+      this.getAllCompanyCoupons();
+    }, 500);
+    
+  }
 }

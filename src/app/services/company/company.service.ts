@@ -31,6 +31,8 @@ export class CompanyService {
   }
 
   public updateCoupon(coupon: Coupon): Observable<any> {
+    coupon.startDate = new Date(JSON.parse(JSON.stringify(coupon.startDate))).toISOString();
+    coupon.endDate = new Date(JSON.parse(JSON.stringify(coupon.endDate))).toISOString();
     return this.http.put(this._URL + "coupon", coupon);
   }
 

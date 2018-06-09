@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-left: 0%">
      <div class="row">
       <div class="col md-3"></div>
       <div class="col md-3">
@@ -26,8 +26,7 @@
     <div class="col col-md-4"></div>
   </div>
   <div class="row text-center" *ngIf="coupons">
-    <div class="col col-md-1"></div>
-    <div class="col col-md-10">
+    <div class="col col-md-12">
       <table class="table" *ngIf="coupons">
         <thead>
           <th>ID</th>
@@ -58,9 +57,17 @@
             <td>
               <input type="text" [(ngModel)]="coupon.amount" (change)="coupon.isUpdated = true" />
             </td>
+
             <td>
-              <input type="text" value="{{coupon.type}}">
+              <select name="couponType" [(ngModel)]="coupon.type" class="form-control" (change) = "coupon.isUpdated = true">
+                <option *ngFor="let type of couponTypes | keys"  [value]="type.key" >{{type.value}}</option>
+              </select>
             </td>
+
+
+            <!-- <td>
+              <input type="text" value="{{coupon.type}}">
+            </td> -->
             <td>
               <input type="text" [(ngModel)]="coupon.message" (change)="coupon.isUpdated = true" />
             </td>
@@ -77,7 +84,6 @@
         </tbody>
       </table>
     </div>
-    <div class="col col-md-1"></div>
   <div class="row">
     <div class="col md-3"></div>
     <div class="col md-3">
