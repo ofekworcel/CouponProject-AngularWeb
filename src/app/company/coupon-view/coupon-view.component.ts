@@ -17,6 +17,7 @@ export class CouponViewComponent implements OnInit {
   modalRef: BsModalRef;
   coupons: any[];
   couponTypes = CouponType;
+  showCoupons: boolean = false;
   
 
 
@@ -29,6 +30,7 @@ export class CouponViewComponent implements OnInit {
 
 
   public getAllCompanyCoupons() {
+    if (this.showCoupons) { this.showCoupons = false; }else this.showCoupons = true;
     this.companyService.getAllCompanyCoupons().subscribe(
       res => {
         
